@@ -1,0 +1,105 @@
+:root {
+  --bg: #f4efe7;
+  --bg-strong: #e4d4c0;
+  --ink: #241a15;
+  --muted: #66544a;
+  --panel: rgba(255, 250, 244, 0.82);
+  --line: rgba(36, 26, 21, 0.12);
+  --accent: #ab4e2f;
+  --accent-deep: #7b3118;
+  --shadow: 0 24px 60px rgba(63, 39, 28, 0.12);
+  --radius: 28px;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(171, 78, 47, 0.14), transparent 28%),
+    radial-gradient(circle at top right, rgba(95, 138, 109, 0.16), transparent 30%),
+    linear-gradient(180deg, #faf5ef 0%, var(--bg) 42%, #efe6da 100%);
+}
+img { display: block; max-width: 100%; }
+.page-shell { width: min(1200px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 80px; }
+.hero, .summary, .content-block {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+.hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; min-height: calc(100svh - 56px); padding: 48px; }
+.eyebrow { margin: 0 0 14px; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-deep); }
+h1, h2, h3 { margin: 0; font-family: "Iowan Old Style", "Palatino Linotype", serif; font-weight: 400; line-height: 0.96; }
+h1 { max-width: 11ch; font-size: clamp(3.4rem, 7vw, 6.8rem); }
+h2 { font-size: clamp(2rem, 3.4vw, 3.2rem); }
+h3 { font-size: clamp(1.4rem, 2vw, 2rem); }
+.hero-text, .status, .caption, .meta, .recommendation, label span, input, select, button, .prompt { font-size: 0.98rem; line-height: 1.6; }
+.hero-text { max-width: 54ch; margin-top: 22px; color: var(--muted); }
+.controls, .field, .field-row, .fabric-content, .recommendations, .stack { display: grid; gap: 16px; }
+.field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.field span { font-weight: 700; }
+input, select, button {
+  width: 100%;
+  border: 1px solid rgba(36, 26, 21, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font-family: inherit;
+  padding: 14px 16px;
+}
+button {
+  border: none;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+  color: #fff8f3;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.7; cursor: progress; }
+.status { margin: 0; color: var(--muted); }
+.status.error { color: #9e2b18; }
+.summary, .content-block { margin-top: 24px; padding: 28px; }
+.summary-grid, .gallery-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.metric, .gallery-item, .fabric-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.58);
+}
+.metric { padding: 18px; }
+.metric strong { display: block; font-size: 2rem; font-family: "Iowan Old Style", "Palatino Linotype", serif; font-weight: 400; }
+.section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.meta, .download-link, .prompt, .gallery-meta { color: var(--muted); }
+.download-link { font-weight: 800; text-decoration: none; }
+.fabric-card { display: grid; gap: 18px; grid-template-columns: 280px minmax(0, 1fr); padding: 18px; }
+.fabric-preview, .gallery-image { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 18px; }
+.fabric-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.swatch { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.08); }
+.recommendation { padding: 14px 16px; border-left: 3px solid var(--accent); background: rgba(245, 235, 228, 0.76); border-radius: 12px 18px 18px 12px; }
+.gallery-item { display: grid; gap: 14px; padding: 16px; }
+.hidden { display: none; }
+@media (max-width: 960px) {
+  .hero, .fabric-card { grid-template-columns: 1fr; }
+  .hero { min-height: auto; padding: 28px; }
+}
+@media (max-width: 640px) {
+  .page-shell { width: min(100% - 20px, 1200px); padding-top: 10px; }
+  .field-row, .section-head { grid-template-columns: 1fr; display: grid; align-items: start; }
+  .summary, .content-block { padding: 20px; }
+}

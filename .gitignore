@@ -1,0 +1,7 @@
+.env
+.venv/
+node_modules/
+npm-debug.log*
+.DS_Store
+runs/
+__pycache__/

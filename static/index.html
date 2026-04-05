@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stitcher Demo</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Fabric Upcycling Demo</p>
+          <h1>Colab-powered results, website-only experience.</h1>
+          <p class="hero-text">
+            Paste your Colab process endpoint, upload the same fabric images, and show the
+            notebook workflow through a simple browser interface.
+          </p>
+        </div>
+        <div class="hero-panel">
+          <form id="stitch-form" class="controls">
+            <label class="field">
+              <span>Colab API URL</span>
+              <input
+                id="api-url"
+                name="apiUrl"
+                type="url"
+                placeholder="https://xxxx.trycloudflare.com/process"
+                required
+              />
+            </label>
+            <label class="field">
+              <span>Fabric images</span>
+              <input id="images" name="images" type="file" accept="image/*" multiple required />
+            </label>
+            <div class="field-row">
+              <label class="field">
+                <span>Fabric size hint</span>
+                <select name="sizeHint">
+                  <option value="mixed" selected>mixed</option>
+                  <option value="small">small</option>
+                  <option value="medium">medium</option>
+                  <option value="large">large</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Top recommendations</span>
+                <input name="topKProducts" type="number" min="1" max="10" value="4" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span>Products per fabric</span>
+                <input name="maxProductsPerFabric" type="number" min="1" max="10" value="3" />
+              </label>
+              <label class="field">
+                <span>Images per product</span>
+                <input name="imagesPerProduct" type="number" min="1" max="4" value="1" />
+              </label>
+            </div>
+            <button id="submit-button" type="submit">Analyze and Generate</button>
+            <p id="status" class="status idle">
+              Paste the Colab endpoint, then upload images. This page sends the job to Colab and renders the returned output.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <section id="summary" class="summary hidden"></section>
+      <section id="uploads" class="content-block hidden"></section>
+      <section id="analysis" class="content-block hidden"></section>
+      <section id="gallery" class="content-block hidden"></section>
+    </main>
+
+    <template id="fabric-template">
+      <article class="fabric-card">
+        <img class="fabric-preview" alt="" />
+        <div class="fabric-content">
+          <div class="fabric-head">
+            <h3></h3>
+            <div class="chips colors"></div>
+          </div>
+          <p class="caption"></p>
+          <div class="chips tags"></div>
+          <div class="recommendations"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="/static/app.js"></script>
+  </body>
+  </html>
